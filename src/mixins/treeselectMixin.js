@@ -78,6 +78,11 @@ export default {
       default: false,
     },
 
+    debounce: {
+      type: Number,
+      default: 0,
+    },
+
     /**
      * When an ancestor node is selected/deselected, whether its disabled descendants should be selected/deselected.
      * You may want to use this in conjunction with `allowClearingDisabled` prop.
@@ -1294,6 +1299,9 @@ export default {
     },
 
     handleRemoteSearch() {
+      /* eslint-disable */
+      debugger
+      /* eslint-enable */
       const { searchQuery } = this.trigger
       const entry = this.getRemoteSearchEntry()
       const done = () => {
@@ -1302,6 +1310,9 @@ export default {
       }
 
       if ((searchQuery === '' || this.cacheOptions) && entry.isLoaded) {
+        /* eslint-disable */
+        debugger
+        /* eslint-enable */
         return done()
       }
 
@@ -1744,6 +1755,9 @@ export default {
 
         end()
       })
+      /* eslint-disable */
+      debugger
+      /* eslint-enable */
       const result = this.loadOptions({
         id: this.getInstanceId(),
         instanceId: this.getInstanceId(),

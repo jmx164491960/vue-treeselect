@@ -1,5 +1,5 @@
 <script>
-  import { debounce, deepExtend, includes } from '../utils'
+  import { deepExtend, includes, debounce } from '../utils'
   import { MIN_INPUT_WIDTH, KEY_CODES, INPUT_DEBOUNCE_DELAY } from '../constants'
 
   const keysThatRequireMenuBeingOpen = [
@@ -51,10 +51,16 @@
     },
 
     created() {
+      const delay = this.instance.debounce > 0 ? this.instance.debounce : INPUT_DEBOUNCE_DELAY
+      let leading = true
+      if (delay > 300) {
+        leading = false
+      }
+
       this.debouncedCallback = debounce(
         this.updateSearchQuery,
-        INPUT_DEBOUNCE_DELAY,
-        { leading: true, trailing: true },
+        delay,
+        { leading, trailing: true },
       )
     },
 
@@ -102,7 +108,7 @@
         const { value } = evt.target
 
         this.value = value
-
+        console.log('onInput:', value)
         if (value) {
           this.debouncedCallback()
         } else {
@@ -282,7 +288,7 @@
 
       updateSearchQuery() {
         const { instance } = this
-
+        console.log('updateSearchQuery:')
         instance.trigger.searchQuery = this.value
       },
     },

@@ -1299,9 +1299,6 @@ export default {
     },
 
     handleRemoteSearch() {
-      /* eslint-disable */
-      debugger
-      /* eslint-enable */
       const { searchQuery } = this.trigger
       const entry = this.getRemoteSearchEntry()
       const done = () => {
@@ -1310,9 +1307,6 @@ export default {
       }
 
       if ((searchQuery === '' || this.cacheOptions) && entry.isLoaded) {
-        /* eslint-disable */
-        debugger
-        /* eslint-enable */
         return done()
       }
 
@@ -1755,9 +1749,6 @@ export default {
 
         end()
       })
-      /* eslint-disable */
-      debugger
-      /* eslint-enable */
       const result = this.loadOptions({
         id: this.getInstanceId(),
         instanceId: this.getInstanceId(),
